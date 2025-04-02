@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:ProjectLauncher"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
-        Closed="OnWindowClosed"
+        Closing="OnWindowClosing"
         Icon="/Resources/rocket_space_ios_icon_218536-32.ico">
     
     <Window.DataContext>
@@ -20,6 +20,7 @@
             x:Name="taskbarIcon"
             IconSource="/Resources/rocket_space_ios_icon_218536-32.ico"
             ToolTipText="Project Launcher"
+            DoubleClickCommand="{Binding ApplicationOpenedCommand}"
         >
             <tb:TaskbarIcon.ContextMenu>
                 <ContextMenu>

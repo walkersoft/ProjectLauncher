@@ -6,7 +6,7 @@ namespace ProjectLauncher
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window, IRecipient<ExitApplication>
+    public partial class MainWindow : Window, IRecipient<ShowApplication>, IRecipient<ExitApplication>
     {
         public MainWindow()
         {
@@ -19,14 +19,20 @@ namespace ProjectLauncher
 
         }
 
-        private void OnWindowClosed(object sender, EventArgs e)
-        {
-
-        }
-
         void IRecipient<ExitApplication>.Receive(ExitApplication message)
         {
             Application.Current.Shutdown();
+        }
+
+        private void OnWindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = true;
+            Hide();
+        }
+
+        void IRecipient<ShowApplication>.Receive(ShowApplication message)
+        {
+            Show();
         }
     }
 }

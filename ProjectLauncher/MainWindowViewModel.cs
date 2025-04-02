@@ -7,9 +7,16 @@ namespace ProjectLauncher
     internal partial class MainWindowViewModel : ObservableObject
     {
         [RelayCommand]
-        public void OnApplicationClosed()
+        public static void OnApplicationClosed()
         {
             WeakReferenceMessenger.Default.Send(new ExitApplication());
         }
+
+        [RelayCommand]
+        public static void OnApplicationOpened()
+        {
+            WeakReferenceMessenger.Default.Send(new ShowApplication());
+        }
+
     }
 }
