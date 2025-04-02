@@ -3,11 +3,23 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:tb="http://www.hardcodet.net/taskbar"
         xmlns:local="clr-namespace:ProjectLauncher"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
         Closed="OnWindowClosed">
     <Grid>
         <Label Content="Good day folks!" />
+        <tb:TaskbarIcon
+            x:Name="taskbarIcon"
+            IconSource="/Resources/rocket_space_ios_icon_218536-32.ico"
+            ToolTipText="Project Launcher"
+        >
+            <tb:TaskbarIcon.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Exit"  />
+                </ContextMenu>
+            </tb:TaskbarIcon.ContextMenu>
+        </tb:TaskbarIcon>
     </Grid>
 </Window>
