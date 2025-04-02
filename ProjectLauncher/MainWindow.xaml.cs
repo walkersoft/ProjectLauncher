@@ -14,11 +14,6 @@ namespace ProjectLauncher
             WeakReferenceMessenger.Default.RegisterAll(this);
         }
 
-        private void CreateTrayMenu()
-        {
-
-        }
-
         void IRecipient<ExitApplication>.Receive(ExitApplication message)
         {
             Application.Current.Shutdown();
