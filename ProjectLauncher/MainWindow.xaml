@@ -7,7 +7,13 @@
         xmlns:local="clr-namespace:ProjectLauncher"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
-        Closed="OnWindowClosed">
+        Closed="OnWindowClosed"
+        Icon="/Resources/rocket_space_ios_icon_218536-32.ico">
+    
+    <Window.DataContext>
+        <local:MainWindowViewModel />
+    </Window.DataContext>
+
     <Grid>
         <Label Content="Good day folks!" />
         <tb:TaskbarIcon
