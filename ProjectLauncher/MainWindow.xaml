@@ -9,24 +9,54 @@
         Title="My Project Launcher" Height="450" Width="800"
         Closing="OnWindowClosing"
         Icon="/Resources/rocket_space_ios_icon_218536-32.ico">
-    
+
     <Window.DataContext>
         <local:MainWindowViewModel />
     </Window.DataContext>
 
-    <Grid>
-        <Label Content="Good day folks!" />
+    <DockPanel>
         <tb:TaskbarIcon
             x:Name="taskbarIcon"
             IconSource="/Resources/rocket_space_ios_icon_218536-32.ico"
             ToolTipText="Project Launcher"
-            DoubleClickCommand="{Binding ApplicationOpenedCommand}"
-        >
+            DoubleClickCommand="{Binding ApplicationOpenedCommand}">
             <tb:TaskbarIcon.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Exit" Command="{Binding ApplicationClosedCommand}" />
                 </ContextMenu>
             </tb:TaskbarIcon.ContextMenu>
         </tb:TaskbarIcon>
-    </Grid>
+        <TabControl>
+            <TabItem Header="Projects">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="6" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <DataGrid Grid.Column="0"
+                              ItemsSource="{Binding ProjectDisplayItems}"
+                              CanUserResizeColumns="True"
+                              CanUserReorderColumns="False"
+                              CanUserSortColumns="True"
+                              AutoGenerateColumns="False"
+                              MinWidth="200">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Project Name" MinWidth="100" Width="225" Binding="{Binding ProjectName}" />
+                            <DataGridCheckBoxColumn Header="Active Project" MinWidth="80" Binding="{Binding IsActive}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <GridSplitter Grid.Column="1" Width="2" Background="SlateBlue" HorizontalAlignment="Stretch" />
+                    <StackPanel Grid.Column="2">
+                        <DataGrid>
+                            
+                        </DataGrid>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Config">
+                <Label Content="Tab2" />
+            </TabItem>
+        </TabControl>
+    </DockPanel>
 </Window>
